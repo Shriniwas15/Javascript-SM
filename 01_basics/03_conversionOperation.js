@@ -20,3 +20,9 @@ console.log(valueInNumber);   // Nan   it is special type
 let isLoggedIn = 0
 let booleanISLoggedIn = Boolean (isLoggedIn)
 console.log(booleanISLoggedIn);
+
+
+// ---------------------- Operations ------------------------------------
+let value = 3
+let negValue = -value
+console.log(negValue);
