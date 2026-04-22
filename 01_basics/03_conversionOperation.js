@@ -26,3 +26,39 @@ console.log(booleanISLoggedIn);
 let value = 3
 let negValue = -value
 console.log(negValue);
+
+
+
+let str1 ="hello"
+let str2 = " shri"
+
+let str3 = str1+str2
+console.log (str3);
+
+console.log("1"+3);
+console.log(2+"2");
+console.log(2+3);
+console.log(2*3);
+console.log("2"+"2");
+console.log("2"+"2"+2+7);
+console.log(("2"+"2")+2+7);
+console.log(2+1+"7"+"2"+1+2);
+console.log(2+2+"4"+"3");
+
+console.log(+true);
+console.log(true);
+console.log(-true);
+console.log(-"");
+
+let num1,num2,num3
+num1 = num2 = num3 = 2 + 2
+console.log(num1);
+
+let gameCounter = 100
+++gameCounter;
+console.log(gameCounter);
+
+let gameCounter1 = 100
+gameCounter1++;
+console.log(gameCounter);
+
