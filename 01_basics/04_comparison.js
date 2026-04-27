@@ -25,3 +25,10 @@ function reverse(str){
 //   return str === str.split('').reverse().join('');
 // }
 // console.log("2 Palindrome:", isPalindrome("madam")); // true
+
+// 3. Largest Number
+// ======================
+function max(arr){
+  return Math.max(...arr);
+}
+console.log("3 Max:", max([1,5,3,9])); // 9
