@@ -32,3 +32,12 @@ function max(arr){
   return Math.max(...arr);
 }
 console.log("3 Max:", max([1,5,3,9])); // 9
+
+
+// ======================
+// 4. Remove Duplicates
+// ======================
+function unique(arr){
+  return [...new Set(arr)];
+}
+console.log("4 Unique:", unique([1,2,2,3])); // [1,2,3]
