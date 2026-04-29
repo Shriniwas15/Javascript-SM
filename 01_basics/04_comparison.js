@@ -1,20 +1,20 @@
-console.log("2">1); 
-console.log(2>1);
-console.log(2>"1")
-console.log(2>"4")
+// console.log("2">1); 
+// console.log(2>1);
+// console.log(2>"1")
+// console.log(2>"4")
 
 // console.log(undefined=0);  //undefined not allowed 
 // console.log(undefined>0);
 
-// ===   strict check
-console.log("2"===2);
+// // ===   strict check
+// console.log("2"===2);
 
 
 //--reverse string
 function reverse(str){
     return str.split('').reverse().join('');
     }
-    console.log(reverse("hello"); // olleh
+    console.log(reverse("hello")); // olleh
      
 // }
 
@@ -41,3 +41,12 @@ function unique(arr){
   return [...new Set(arr)];
 }
 console.log("4 Unique:", unique([1,2,2,3])); // [1,2,3]
+
+
+// ======================
+// 5. Sum of Array
+// ======================
+function sum(arr){
+  return arr.reduce((a,b)=>a+b,0);
+}
+console.log("5 Sum:", sum([1,2,3,4])); // 10
