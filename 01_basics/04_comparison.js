@@ -50,3 +50,13 @@ function sum(arr){
   return arr.reduce((a,b)=>a+b,0);
 }
 console.log("5 Sum:", sum([1,2,3,4])); // 10
+
+// ======================
+// 6. Flatten Array
+// ======================
+function flat(arr){
+  return arr.flat(Infinity);
+}
+console.log("6 Flat:", flat([1,[2,[3]]])); // [1,2,3]
+
+
