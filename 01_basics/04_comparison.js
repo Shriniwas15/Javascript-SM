@@ -59,4 +59,13 @@ function flat(arr){
 }
 console.log("6 Flat:", flat([1,[2,[3]]])); // [1,2,3]
 
-
+// ======================
+// 7. Count Characters
+// ======================
+function count(str){
+  return str.split('').reduce((acc,c)=>{
+    acc[c] = (acc[c]||0)+1;
+    return acc;
+  },{});
+}
+console.log("7 Count:", count("aab")); // {a:2,b:1}
