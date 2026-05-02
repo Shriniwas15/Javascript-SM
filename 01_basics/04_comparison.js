@@ -69,3 +69,17 @@ function count(str){
   },{});
 }
 console.log("7 Count:", count("aab")); // {a:2,b:1}
+
+// ======================
+// 8. Debounce
+// ======================
+function debounce(fn, delay){
+  let timer;
+  return function(...args){
+    clearTimeout(timer);
+    timer = setTimeout(()=>fn.apply(this,args), delay);
+  }
+}
+const debounced = debounce(()=>console.log("8 Debounced Call"),1000);
+debounced(); debounced(); debounced(); // only one executes
+
