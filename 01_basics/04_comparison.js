@@ -83,3 +83,21 @@ function debounce(fn, delay){
 const debounced = debounce(()=>console.log("8 Debounced Call"),1000);
 debounced(); debounced(); debounced(); // only one executes
 
+
+// ======================
+// 9. Throttle
+// ======================
+function throttle(fn, limit){
+  let flag = true;
+  return function(){
+    if(flag){
+      fn();
+      flag = false;
+      setTimeout(()=>flag=true, limit);
+    }
+  }
+}
+const throttled = throttle(()=>console.log("9 Throttled Call"),1000);
+throttled(); throttled(); throttled();
+
+
