@@ -100,4 +100,15 @@ function throttle(fn, limit){
 const throttled = throttle(()=>console.log("9 Throttled Call"),1000);
 throttled(); throttled(); throttled();
 
+// ======================
+// 10. Deep Copy
+// ======================
+function deepCopy(obj){
+  return JSON.parse(JSON.stringify(obj));
+}
+const obj1 = {x:1};
+const obj2 = deepCopy(obj1);
+console.log("10 Deep Copy:", obj2);
+
+
 
