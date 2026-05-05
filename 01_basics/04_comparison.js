@@ -110,5 +110,18 @@ const obj1 = {x:1};
 const obj2 = deepCopy(obj1);
 console.log("10 Deep Copy:", obj2);
 
+// ======================
+// 11. Closure
+// ======================
+function counter(){
+  let count = 0;
+  return function(){
+    return ++count;
+  }
+}
+const c = counter();
+console.log("11 Closure:", c(), c()); // 1 2
+
+
 
 
