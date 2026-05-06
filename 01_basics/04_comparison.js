@@ -122,6 +122,18 @@ function counter(){
 const c = counter();
 console.log("11 Closure:", c(), c()); // 1 2
 
+// ======================
+// 12. Memoization
+// ======================
+function memo(fn){
+  let cache = {};
+  return function(n){
+    if(cache[n]) return cache[n];
+    return cache[n] = fn(n);
+  }
+}
+const square = memo(n=>n*n);
+console.log("12 Memo:", square(5), square(5)); // cached
 
 
 
