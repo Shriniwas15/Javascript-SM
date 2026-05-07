@@ -136,4 +136,15 @@ const square = memo(n=>n*n);
 console.log("12 Memo:", square(5), square(5)); // cached
 
 
+// ======================
+// 13. Anagram
+// ======================
+function isAnagram(a,b){
+  return a.split('').sort().join('') === b.split('').sort().join('');
+}
+console.log("13 Anagram:", isAnagram("listen","silent")); // true
+
+
+
+
 
