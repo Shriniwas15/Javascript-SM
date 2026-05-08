@@ -145,6 +145,15 @@ function isAnagram(a,b){
 console.log("13 Anagram:", isAnagram("listen","silent")); // true
 
 
+// ======================
+// 14. Missing Number
+// ======================
+function missing(arr){
+  let n = arr.length+1;
+  let sum = n*(n+1)/2;
+  return sum - arr.reduce((a,b)=>a+b,0);
+}
+console.log("14 Missing:", missing([1,2,4,5])); // 3
 
 
 
