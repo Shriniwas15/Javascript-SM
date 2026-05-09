@@ -155,5 +155,16 @@ function missing(arr){
 }
 console.log("14 Missing:", missing([1,2,4,5])); // 3
 
+// ======================
+// 15. Capitalize Words
+// ======================
+function cap(str){
+  return str.split(' ')
+    .map(w=>w[0].toUpperCase()+w.slice(1))
+    .join(' ');
+}
+console.log("15 Capitalize:", cap("hello world"));
+
+
 
 
