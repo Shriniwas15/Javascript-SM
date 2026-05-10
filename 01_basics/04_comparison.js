@@ -165,6 +165,14 @@ function cap(str){
 }
 console.log("15 Capitalize:", cap("hello world"));
 
+// ======================
+// 16. Promise
+// ======================
+const p = new Promise((res)=>{
+  setTimeout(()=>res("16 Promise Done"),1000);
+});
+p.then(console.log);
+
 
 
 
