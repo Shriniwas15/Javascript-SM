@@ -173,6 +173,15 @@ const p = new Promise((res)=>{
 });
 p.then(console.log);
 
+// ======================
+// 17. Async/Await
+// ======================
+async function asyncExample(){
+  return "17 Async/Await Done";
+}
+asyncExample().then(console.log);
+
+
 
 
 
