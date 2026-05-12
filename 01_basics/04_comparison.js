@@ -182,6 +182,19 @@ async function asyncExample(){
 asyncExample().then(console.log);
 
 
+// ======================
+// 18. Event Loop
+// ======================
+console.log("18 Start");
+
+setTimeout(()=>console.log("18 Timeout"),0);
+
+Promise.resolve().then(()=>console.log("18 Promise"));
+
+console.log("18 End");
+
+
+
 
 
 
