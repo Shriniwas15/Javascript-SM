@@ -193,6 +193,18 @@ Promise.resolve().then(()=>console.log("18 Promise"));
 
 console.log("18 End");
 
+// ======================
+// 19. Custom Map
+// ======================
+Array.prototype.myMap = function(cb){
+  let res=[];
+  for(let i=0;i<this.length;i++){
+    res.push(cb(this[i]));
+  }
+  return res;
+}
+console.log("19 Custom Map:", [1,2,3].myMap(x=>x*2));
+
 
 
 
