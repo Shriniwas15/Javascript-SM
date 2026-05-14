@@ -205,6 +205,15 @@ Array.prototype.myMap = function(cb){
 }
 console.log("19 Custom Map:", [1,2,3].myMap(x=>x*2));
 
+// ======================
+// 20. Second Largest
+// ======================
+function secondLargest(arr){
+  return [...new Set(arr)].sort((a,b)=>b-a)[1];
+}
+console.log("20 Second Largest:", secondLargest([1,5,3,9]));
+
+
 
 
 
