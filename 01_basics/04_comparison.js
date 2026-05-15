@@ -213,6 +213,22 @@ function secondLargest(arr){
 }
 console.log("20 Second Largest:", secondLargest([1,5,3,9]));
 
+// ======================
+// 21. Group By
+// ======================
+function groupBy(arr,key){
+  return arr.reduce((acc,obj)=>{
+    let k = obj[key];
+    acc[k] = acc[k] || [];
+    acc[k].push(obj);
+    return acc;
+  },{});
+}
+console.log("21 Group By:", groupBy(
+  [{age:20},{age:20},{age:30}],
+  "age"
+));
+
 
 
 
