@@ -229,6 +229,16 @@ console.log("21 Group By:", groupBy(
   "age"
 ));
 
+function curry(a){
+  return function(b){
+    return function(c){
+      return a + b + c;
+    }
+  }
+}
+
+console.log(curry(1)(2)(3)); // 6
+
 
 
 
