@@ -229,15 +229,33 @@ console.log("21 Group By:", groupBy(
   "age"
 ));
 
+//22. Currying Function
 function curry(a){
   return function(b){
     return function(c){
-      return a + b + c;
+      return "ans: " + (a + b + c);
     }
   }
 }
 
 console.log(curry(1)(2)(3)); // 6
+
+//23. Polyfill for map()
+Array.prototype.myMap = function(callback){
+  let result = [];
+
+  for(let i=0; i<this.length; i++){
+    result.push(callback(this[i], i, this));
+  }
+
+  return result;
+}
+
+const arr = [1,2,3];
+
+const output = arr.myMap(x => x * 2);
+
+console.log(output); // [2,4,6]
 
 
 
