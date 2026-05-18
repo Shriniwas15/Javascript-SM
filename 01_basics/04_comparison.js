@@ -233,7 +233,7 @@ console.log("21 Group By:", groupBy(
 function curry(a){
   return function(b){
     return function(c){
-      return "ans: " + (a + b + c);
+      return "22 ans: " + (a + b + c);
     }
   }
 }
@@ -255,8 +255,25 @@ const arr = [1,2,3];
 
 const output = arr.myMap(x => x * 2);
 
-console.log(output); // [2,4,6]
+console.log(("23 ")+output); // [2,4,6]
 
+//24. Polyfill for filter()
+Array.prototype.myFilter = function(callback){
+  let result = [];
+
+  for(let i=0; i<this.length; i++){
+    if(callback(this[i], i, this)){
+      result.push(this[i]);
+    }
+  }
+
+  return result;
+}
+
+const nums = [1,2,3,4];
+
+console.log(("24 ") +nums.myFilter(x => x > 2));
+// [3,4]
 
 
 
