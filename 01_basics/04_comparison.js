@@ -275,6 +275,23 @@ const nums = [1,2,3,4];
 console.log(("24 ") +nums.myFilter(x => x > 2));
 // [3,4]
 
+//25. Polyfill for reduce()
+Array.prototype.myReduce = function(callback, initial){
+  let acc = initial;
+
+  for(let i=0; i<this.length; i++){
+    acc = callback(acc, this[i]);
+  }
+
+  return acc;
+}
+
+const nums1 = [1,2,3];
+
+const sum1 = nums1.myReduce((a,b)=>a+b,0);
+
+console.log(sum1); // 6
+
 
 
 
