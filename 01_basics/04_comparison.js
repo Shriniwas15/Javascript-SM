@@ -292,6 +292,42 @@ const sum1 = nums1.myReduce((a,b)=>a+b,0);
 
 console.log(sum1); // 6
 
+//26. Implement Promise.all
+
+function myPromiseAll(promises){
+
+  return new Promise((resolve, reject)=>{
+
+    let results = [];
+    let completed = 0;
+
+    promises.forEach((p,index)=>{
+
+      Promise.resolve(p)
+      .then(data=>{
+
+        results[index] = data;
+        completed++;
+
+        if(completed === promises.length){
+          resolve(results);
+        }
+
+      })
+      .catch(reject);
+
+    });
+
+  });
+
+}
+
+const p1 = Promise.resolve(1);
+const p2 = Promise.resolve(2);
+
+myPromiseAll([p1,p2])
+.then(console.log("26")); // [1,2]
+
 
 
 
