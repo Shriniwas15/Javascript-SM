@@ -326,8 +326,39 @@ const p1 = Promise.resolve(1);
 const p2 = Promise.resolve(2);
 
 myPromiseAll([p1,p2])
-.then(console.log("26")); // [1,2]
+.then(console.log); // [1,2]
 
+//27. Custom EventEmitter
+
+class EventEmitter{
+
+  constructor(){
+    this.events = {};
+  }
+
+  on(event, callback){
+    if(!this.events[event]){
+      this.events[event] = [];
+    }
+
+    this.events[event].push(callback);
+  }
+
+  emit(event, data){
+    if(this.events[event]){
+      this.events[event].forEach(cb => cb(data));
+    }
+  }
+
+}
+
+const emitter = new EventEmitter();
+
+emitter.on("message", data=>{
+  console.log(data);
+});
+
+emitter.emit("message","Hello");
 
 
 
