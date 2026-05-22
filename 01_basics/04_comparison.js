@@ -360,6 +360,37 @@ emitter.on("message", data=>{
 
 emitter.emit("message","Hello");
 
+//27. Custom EventEmitter
+class EventEmitter{
+
+  constructor(){
+    this.events = {};
+  }
+
+  on(event, callback){
+    if(!this.events[event]){
+      this.events[event] = [];
+    }
+
+    this.events[event].push(callback);
+  }
+
+  emit(event, data){
+    if(this.events[event]){
+      this.events[event].forEach(cb => cb(data));
+    }
+  }
+
+}
+
+const emitter = new EventEmitter();
+
+emitter.on("message", data=>{
+  console.log(data);
+});
+
+emitter.emit("message","Hello");
+
 
 
 
