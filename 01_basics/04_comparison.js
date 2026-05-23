@@ -361,7 +361,7 @@ emitter.on("message", data=>{
 emitter.emit("message","Hello");
 
 //27. Custom EventEmitter
-class EventEmitter{
+class EventEmitter1{
 
   constructor(){
     this.events = {};
@@ -383,15 +383,39 @@ class EventEmitter{
 
 }
 
-const emitter = new EventEmitter();
+const emitter1= new EventEmitter();
 
-emitter.on("message", data=>{
+emitter1.on("message", data=>{
   console.log(data);
 });
 
-emitter.emit("message","Hello");
+emitter1.emit("message","27  "+"Hello");
 
+//28. Deep Clone with Recursion
 
+function deepClone(obj){
+
+  if(obj === null || typeof obj !== "object"){
+    return obj;
+  }
+
+  let copy = Array.isArray(obj) ? [] : {};
+
+  for(let key in obj){
+    copy[key] = deepClone(obj[key]);
+  }
+
+  return copy;
+}
+
+const obj = {
+  a:1,
+  b:{c:2}
+};
+
+const cloned = deepClone(obj);
+
+console.log(("28 Deep Clone:") + JSON.stringify(cloned));
 
 
 
