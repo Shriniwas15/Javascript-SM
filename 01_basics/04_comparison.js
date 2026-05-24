@@ -417,5 +417,27 @@ const cloned = deepClone(obj);
 
 console.log(("28 Deep Clone:") + JSON.stringify(cloned));
 
+//29. Call, Apply, Bind
+
+const person = {
+  name:"Shriniwas"
+};
+
+function greet(city){
+  console.log(
+
+    ("29:  ")+
+    `Hello ${this.name} from ${city}`
+  );
+}
+
+greet.call(person,"Pune");
+
+greet.apply(person,["Mumbai"]);
+
+const bindFn = greet.bind(person,"Nagpur");
+
+bindFn();
+
 
 
