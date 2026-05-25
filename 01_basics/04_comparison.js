@@ -439,5 +439,15 @@ const bindFn = greet.bind(person,"Nagpur");
 
 bindFn();
 
+//30. Output-Based Closure Question
+
+for(var i=0; i<3; i++){
+
+  setTimeout(()=>{
+    console.log(i);
+  },1000);01_
+
+}
+
 
 
