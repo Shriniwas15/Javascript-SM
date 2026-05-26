@@ -444,8 +444,17 @@ bindFn();
 for(var i=0; i<3; i++){
 
   setTimeout(()=>{
-    console.log(i);
-  },1000);01_
+    console.log(("30  ")+i);
+  },1000)
+
+}
+
+//31. Fix Closure Problem
+for(let i=0; i<3; i++){
+
+  setTimeout(()=>{
+    console.log(("31  ")+ i);
+  },1000);
 
 }
 
