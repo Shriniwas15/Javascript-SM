@@ -458,5 +458,28 @@ for(let i=0; i<3; i++){
 
 }
 
+//32. Implement once() Function
+
+function once(fn){
+
+  let called = false;
+
+  return function(){
+
+    if(!called){
+      called = true;
+      return fn();
+    }
+
+  }
+
+}
+
+const hello = once(()=>{
+  console.log(("32   ")+"Hello");
+});
+
+hello();
+hello();
 
 
