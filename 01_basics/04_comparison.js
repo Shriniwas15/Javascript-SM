@@ -476,7 +476,7 @@ function once(fn){
 }
 
 const hello = once(()=>{
-  console.log(("32   ")+"Hello");
+  console.log(("   ")+"Hello");
 });
 
 hello();
