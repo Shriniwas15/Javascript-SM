@@ -482,4 +482,55 @@ const hello = once(()=>{
 hello();
 hello();
 
+//33. Array Chunking
+function chunk(arr,size){
 
+  let result = [];
+
+  for(let i=0; i<arr.length; i+=size){
+    result.push(arr.slice(i,i+size));
+  }
+
+  return result;
+}
+
+console.log(("33    ")+
+  chunk([1,2,3,4,5],2)
+);
+
+//34. Infinite Currying
+
+function sum(a){
+
+  return function(b){
+
+    if(b){
+      return sum(a+b);
+    }
+
+    return a;
+
+  }
+
+}
+
+console.log(("34    ")+sum(1)(2)(3)(4)());
+
+//35. Retry API Calls
+
+async function retry(fn, retries){
+
+  try{
+    return await fn();
+  }
+  catch(err){
+
+    if(retries === 0){
+      throw err;
+    }
+
+    return retry(fn, retries-1);
+
+  }
+
+}//Retries failed API requests automatically.
