@@ -54,3 +54,8 @@ let userTwo = userOne; // userTwo is a reference to the same object in memory as
 userTwo.email = "xyz@example.com";
 console.log(userOne.email); // Output: xyz@example.com
 console.log(userTwo.email); // Output: xyz@example.com
+
+// summery : Primitive types are stored directly in the variable and are immutable,
+//   while reference types store a reference to the location in memory where the data is stored and are mutable.
+//  Changes to a reference type through one variable will affect all variables that reference that object, 
+//  while changes to a primitive type do not affect other variables.
