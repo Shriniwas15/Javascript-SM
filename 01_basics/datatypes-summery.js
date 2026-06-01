@@ -59,3 +59,31 @@ console.log(userTwo.email); // Output: xyz@example.com
 //   while reference types store a reference to the location in memory where the data is stored and are mutable.
 //  Changes to a reference type through one variable will affect all variables that reference that object, 
 //  while changes to a primitive type do not affect other variables.
+   
+//example of immutability of primitive types
+let str1 = "Hello";
+let str2 = str1;
+str2 = "World"; // Changing str2 does not affect str1
+console.log(str1); // Output: Hello
+console.log(str2); // Output: World
+
+//example of mutability of reference types
+let arr1 = [1, 2, 3];
+let arr2 = arr1;
+arr2.push(4); // Changing arr2 affects arr1 because they reference the same array in memory
+console.log(arr1); // Output: [1, 2, 3, 4]
+console.log(arr2); // Output: [1, 2, 3, 4]
+
+//example of immutability of primitive types
+let num1 = 10;
+let num2 = num1;
+num2 = 20;
+console.log(num1); // Output: 10
+console.log(num2); // Output: 20
+
+//example of mutability of reference types
+let obj1 = { name: "Alice" };
+let obj2 = obj1;
+obj2.name = "Bob";
+console.log(obj1.name); // Output: Bob
+console.log(obj2.name); // Output: Bob
