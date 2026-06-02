@@ -534,3 +534,35 @@ async function retry(fn, retries){
   }
 
 }//Retries failed API requests automatically.
+
+//36. Implement a Simple Pub/Sub System
+
+class PubSub{
+
+  constructor(){
+    this.events = {};
+  }
+
+  subscribe(event, callback){
+    if(!this.events[event]){
+      this.events[event] = [];
+    }
+
+    this.events[event].push(callback);
+  }
+
+  publish(event, data){
+    if(this.events[event]){
+      this.events[event].forEach(cb => cb(data));
+    }
+  }
+
+}
+
+const pubsub = new PubSub();
+
+pubsub.subscribe("news", data=>{
+  console.log(("36   ")+data);
+});
+
+pubsub.publish("news","Breaking News!");
