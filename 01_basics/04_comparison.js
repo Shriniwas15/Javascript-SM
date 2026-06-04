@@ -615,3 +615,55 @@ console.log(("37   ")+lru.get(3));
 console.log(("37   ")+lru.get(4));
 
 //38. Implement a Simple Event Loop
+// A simple event loop can be implemented using a queue to manage tasks and a function to process them.
+
+class SimpleEventLoop{
+
+  constructor(){
+    this.queue = [];
+    this.processing = false;
+  }
+
+  enqueue(task){
+    this.queue.push(task);
+    this.process();
+  }
+
+  async process(){
+    if(this.processing) return;
+
+    this.processing = true;
+
+    while(this.queue.length > 0){
+      const task = this.queue.shift();
+      await task();
+    }
+
+    this.processing = false;
+
+  }
+}
+
+const eventLoop = new SimpleEventLoop();
+
+eventLoop.enqueue(async ()=>{
+  console.log(("38   ")+ "Task 1");
+
+  await new Promise(res => setTimeout(res, 1000));
+}
+
+);
+
+
+eventLoop.enqueue(async ()=>{
+  console.log(("38   ")+ "Task 2");
+
+  await new Promise(res => setTimeout(res, 500));
+}
+
+);
+
+eventLoop.enqueue(async ()=>{
+  console.log(("38   ")+ "Task 3");
+}
+);
