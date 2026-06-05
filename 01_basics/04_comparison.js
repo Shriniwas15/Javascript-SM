@@ -667,3 +667,39 @@ eventLoop.enqueue(async ()=>{
   console.log(("38   ")+ "Task 3");
 }
 );
+
+//39. Implement a Simple Observable Pattern
+// The Observable pattern allows you to create a stream of data that can be observed and reacted to.
+
+class Observable{
+
+  constructor(){
+    this.observers = [];
+  }
+
+  subscribe(observer){
+    this.observers.push(observer);
+  }
+
+  notify(data){
+    this.observers.forEach(observer => observer(data));
+  }
+
+}
+
+const observable = new Observable();
+
+observable.subscribe(data=>{
+  console.log(("39   ")+ "Observer 1: " + data);
+});
+
+observable.subscribe(data=>{
+  console.log(("39   ")+ "Observer 2: " + data);
+});
+
+observable
+.notify("Hello Observers!");
+
+
+
+
