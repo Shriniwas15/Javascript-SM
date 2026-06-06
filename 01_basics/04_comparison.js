@@ -700,6 +700,41 @@ observable.subscribe(data=>{
 observable
 .notify("Hello Observers!");
 
+//40. Implement a Simple State Management System
 
+// A simple state management system can be implemented using a class 
+// that holds the state and allows components to subscribe to changes.
 
+class StateManager{
+
+  constructor(initialState){
+    this.state = initialState;
+    this.listeners = [];
+  }
+
+  subscribe(listener){
+    this.listeners.push(listener);
+  }
+
+  setState(newState
+  ){
+    this.state = {...this.state, ...newState};
+    this.listeners.forEach(listener => listener(this.state));
+  }
+
+}
+
+const stateManager = new StateManager({count:0});
+
+stateManager.subscribe(state=>{
+  console.log(("40   ")+ "Count: " + state.count);
+});
+
+stateManager.setState({count:1});
+stateManager.setState({count:2});
+
+// These questions cover a wide range of JavaScript concepts and can help you prepare for interviews effectively. 
+// Make sure to understand the underlying principles and practice coding these solutions to solidify your knowledge.
+
+// Note: The above code snippets are meant for demonstration purposes and may not cover all edge cases or optimizations.
 
