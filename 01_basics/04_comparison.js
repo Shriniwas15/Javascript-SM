@@ -738,3 +738,86 @@ stateManager.setState({count:2});
 
 // Note: The above code snippets are meant for demonstration purposes and may not cover all edge cases or optimizations.
 
+//41. Implement a Simple Binary Search Tree
+
+// A binary search tree is a data structure that allows 
+//for efficient searching, insertion, and deletion of elements.
+
+class TreeNode{
+
+  constructor(value){
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+}
+
+class BinarySearchTree{
+
+  constructor(){
+    this.root = null;
+  }
+
+  insert(value
+  ){
+    const newNode = new TreeNode(value);
+
+    if(!this.
+root){
+      this.root = newNode;
+      return;
+    }
+
+    let current = this.root;
+
+    while(true){
+      if(value < current.value){
+        if(!current.left){
+          current.left = newNode;
+          return;
+        }
+        current = current.left;
+      }
+      else{
+        if(!current.right){
+          current.right = newNode;
+          return;
+        }
+        current = current.right;
+      }
+    }
+  }
+
+  search(value){
+    let current = this.root;
+
+    while(current){
+      if(value === current.value){
+        return true;
+      }
+      else if(value < current.value){
+        current = current.left;
+      }
+      else{
+        current = current.right;
+      }
+    }
+
+    return false;
+  }
+
+}
+
+const bst = new BinarySearchTree();
+
+bst.insert(5);
+bst.insert(3);
+bst.insert(7);
+
+console.log(("41   ")+ bst.search(3)); // true
+console.log(("41   ")+ bst
+.search(4)); // false
+
+
+
