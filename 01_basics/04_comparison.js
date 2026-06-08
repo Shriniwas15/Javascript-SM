@@ -821,3 +821,45 @@ console.log(("41   ")+ bst
 
 
 
+// 42. Implement a Simple Graph Data Structure
+
+// A graph is a collection of nodes (vertices) and edges that connect them. 
+// It can be used to represent various real-world problems like social networks, transportation systems, etc.
+
+class Graph{
+
+  constructor(){
+    this.adjacencyList = {};
+  }
+
+  addVertex(vertex){
+    if(!this.adjacencyList[vertex]){
+      this.adjacencyList[vertex] = [];
+    }
+  }
+
+  addEdge(v1, v2){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencyList[v1].push(v2);
+    this.adjacencyList[v2].push(v1);
+  }
+
+  getNeighbors(vertex){
+    return this.adjacencyList[vertex] || [];
+  }
+
+}
+
+const graph = new Graph();
+
+graph.addEdge("A", "B");
+graph.addEdge("A", "C");
+graph.addEdge("B", "D");
+
+console.log(("42   ")+ graph.getNeighbors
+("A")); // ["B", "C"]
+console.log(("42   ")+ graph.getNeighbors("B")); // ["A", "D"]
+
+
+
