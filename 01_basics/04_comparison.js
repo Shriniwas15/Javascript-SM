@@ -863,3 +863,25 @@ console.log(("42   ")+ graph.getNeighbors("B")); // ["A", "D"]
 
 
 
+//43. Implement a Simple Depth-First Search (DFS) Algorithm
+
+// Depth-First Search is a graph traversal algorithm that explores as far as possible along each branch before backtracking.
+
+function dfs(graph, start, visited = new Set()){
+
+  if(visited.has(start)){
+    return;
+  }
+
+  console.log(("43   ")+ start);
+  visited.add(start);
+
+  graph.getNeighbors(start).forEach(neighbor => {
+    dfs(graph, neighbor, visited);
+  });
+
+}
+
+dfs(graph, "A"); // A B D C
+
+//44. Implement a Simple Breadth-First Search (BFS) Algorithm
