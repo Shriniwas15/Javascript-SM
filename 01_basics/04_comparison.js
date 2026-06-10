@@ -885,3 +885,28 @@ function dfs(graph, start, visited = new Set()){
 dfs(graph, "A"); // A B D C
 
 //44. Implement a Simple Breadth-First Search (BFS) Algorithm
+
+// Breadth-First Search is a graph traversal algorithm 
+// that explores all neighbors at the present depth before moving on to the nodes at the next depth level.
+
+function bfs(graph, start){
+
+  let visited = new Set();
+  let queue = [start];
+
+  while(queue.length > 0){
+    let vertex = queue.shift();
+
+    if(!visited.has(vertex)){
+      console.log(("44   ")+ vertex);
+      visited.add(vertex);
+      queue.push(...graph.getNeighbors(vertex));
+    }
+  }
+
+}
+
+bfs(graph, "A"); // A B C D
+
+
+
