@@ -909,4 +909,46 @@ function bfs(graph, start){
 bfs(graph, "A"); // A B C D
 
 
+//45. Implement a Simple Topological Sort Algorithm
 
+
+// Topological Sort is a linear ordering of vertices in a directed acyclic graph (DAG) 
+// such that for every directed edge uv, vertex u comes before v in the ordering.
+
+function topologicalSort(graph){
+
+  let visited = new Set();
+  let stack = [];
+
+  function 
+dfs(vertex){
+    visited.add(vertex);
+
+    graph.getNeighbors(vertex).forEach(neighbor => {
+      if(!visited.has(neighbor)){
+        dfs(neighbor);
+      }
+    });
+
+    stack.push(vertex);
+  }
+
+  Object.keys(graph.adjacencyList).forEach(vertex => {
+    if(!visited.has(vertex)){
+      dfs(vertex);
+    }
+  });
+
+  return stack.reverse();
+}
+
+const dag = new Graph();
+
+dag.addEdge("A", "B");
+dag.addEdge("A", "C");
+dag.addEdge("B", "D");
+dag.addEdge("C", "D");
+
+console.log(("45   ")+ topologicalSort(dag)); // A C B D or A B C D
+
+//46. Implement a Simple Dijkstra's Algorithm
