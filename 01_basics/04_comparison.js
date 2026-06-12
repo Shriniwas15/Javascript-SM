@@ -952,3 +952,84 @@ dag.addEdge("C", "D");
 console.log(("45   ")+ topologicalSort(dag)); // A C B D or A B C D
 
 //46. Implement a Simple Dijkstra's Algorithm
+
+// Dijkstra's Algorithm is a graph algorithm that finds the shortest path between nodes in a graph, 
+// which may represent, for example, road networks.
+
+function dijkstra(graph, start){
+
+  let distances = {};
+  let visited = new Set();
+  let pq = new MinPriorityQueue();
+
+  Object.keys(graph.adjacencyList).forEach(vertex => {
+    distances[vertex] = Infinity;
+  });
+
+  distances[start] = 0;
+  pq.enqueue(start, 0);
+
+  while(!pq.isEmpty()){
+    let {element: vertex} = pq.dequeue();
+
+    if(visited.has(vertex)){
+      continue;
+    }
+
+    visited.add(vertex);
+
+    graph.getNeighbors(vertex).forEach(neighbor => {
+      let alt = distances[vertex] + 1; // Assuming all edges have weight 1
+
+      
+
+      if(alt < distances[neighbor]){
+        distances[neighbor] = alt;
+        pq.enqueue(neighbor, alt);
+      }
+    }
+    );
+
+  }
+
+  return distances;
+
+}
+
+// Note: The MinPriorityQueue is a simple implementation of a priority queue that can be used for Dijkstra's algorithm. 
+// You can implement it using a binary heap or any other efficient data structure.
+
+class MinPriorityQueue{
+
+  constructor(){
+    this.queue = [];
+  }
+
+  enqueue(element, priority){
+    this.queue.push({element, priority});
+    this.queue.sort((a,b) => a.priority - b.priority);
+
+  }
+
+  dequeue(){
+    return this.queue.shift();
+  }
+
+  isEmpty(){
+    return this.queue.length === 0;
+  }
+
+}
+
+const graph2 = new Graph();
+
+graph2.addEdge("A", "B");
+graph2.addEdge("A", "C");
+graph2.addEdge("B", "D");
+graph2.addEdge("C", "D");
+
+console.log(("46   ")+ dijkstra(graph2, "A")); // {A:0, B:1, C:1, D:2}
+
+
+
+
