@@ -1030,6 +1030,81 @@ graph2.addEdge("C", "D");
 
 console.log(("46   ")+ dijkstra(graph2, "A")); // {A:0, B:1, C:1, D:2}
 
+//47 Implement a Simple A* Search Algorithm
+
+// A* Search is a graph traversal and path search algorithm that finds the shortest path between nodes in a graph,
+
+// which may represent, for example, road networks. It uses heuristics to improve performance.
+
+function aStar(graph, start, goal, heuristic){
+
+  let openSet = new MinPriorityQueue();
+  let cameFrom = {};
+  let gScore = {};
+  let fScore = {};
+
+  Object.keys(graph.adjacencyList).forEach(vertex => {
+    gScore[vertex] = Infinity;
+    fScore[vertex] = Infinity;
+  });
+
+  gScore[start] = 0;
+  fScore[start] = heuristic(start, goal);
+  openSet.enqueue(start, fScore[start]);
+
+  while(!openSet.isEmpty()){
+
+    let {element: current} = openSet.dequeue();
+
+    if(current === goal){
+      let path = [];
+      while(current){
+        path.unshift(current);
+        current = cameFrom[current];
+      }
+      return path;
+    }
 
 
+    graph.getNeighbors(current).forEach(neighbor => {
+      let tentativeGScore = gScore[current] + 1; // Assuming all edges have weight 1
+
+      if(tentativeGScore < gScore[neighbor]){
+        cameFrom[neighbor] = current;
+        gScore[neighbor] = tentativeGScore;
+        fScore[neighbor] = gScore[neighbor] + heuristic(neighbor, goal);
+
+        if(!openSet.queue.some(item => item.element === neighbor)){
+          openSet.enqueue(neighbor, fScore[neighbor]);
+        }
+      }
+    }
+    );
+
+  }
+
+  return null; // No path found
+
+}
+// Note: The heuristic function should be defined based on the specific problem domain.
+
+function heuristic(vertex, goal){
+  // Example
+  const heuristics = {
+    A: 3,
+    B: 2,
+    C: 1,
+    D: 0
+  };
+  return heuristics[vertex] || 0;
+}
+
+const graph3 = new Graph();
+
+graph3.addEdge("A", "B");
+graph3.addEdge("A", "C");
+graph3.addEdge("B", "D");
+graph3.addEdge("C", "D");
+
+console.log(("47   ")+ aStar(graph3, "A", "D", heuristic)); // A C D or A B D
 
