@@ -1108,3 +1108,32 @@ graph3.addEdge("C", "D");
 
 console.log(("47   ")+ aStar(graph3, "A", "D", heuristic)); // A C D or A B D
 
+//48. Implement a Simple Knapsack Problem Solution
+
+// The Knapsack Problem is a combinatorial optimization problem that asks for the maximum value
+// that can be put in a knapsack of a given capacity, given a list of items with weights and values.
+
+function knapsack(weights, values, capacity){
+
+  let dp = Array(weights.length + 1).fill(0).map(() => Array(capacity + 1).fill(0));
+
+  for(let i=1; i<=weights.length; i++){
+    for(let w=1; w<=capacity; w++){
+      if(weights[i-1] <= w){
+        dp[i][w] = Math.max(dp[i-1][w], dp[i-1][w - weights[i-1]] + values[i-1]);
+      }
+      else{
+        dp[i][w] = dp[i-1][w];
+      }
+    }
+  }
+
+  return dp[weights.length][capacity];
+
+}
+
+const weights = [2,3,4];
+const values = [3,4,5];
+const capacity = 5;
+
+console.log(("48   ")+ knapsack(weights, values, capacity)); // 7 (items with weight 2 and 3)
