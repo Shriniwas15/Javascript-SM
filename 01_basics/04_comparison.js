@@ -1137,3 +1137,34 @@ const values = [3,4,5];
 const capacity = 5;
 
 console.log(("48   ")+ knapsack(weights, values, capacity)); // 7 (items with weight 2 and 3)
+
+//49. Implement a Simple Longest Common Subsequence (LCS) Algorithm
+
+// The Longest Common Subsequence problem is to find the longest subsequence common to two sequences.
+
+function lcs(str1, str2){
+
+  let dp = Array(str1.length + 1).fill(0).map(() => Array(str2.length + 1).fill(0));
+
+  for(let i=1; i<=str1.length; i++){
+    for(let j=1; j<=str2.length; j++){
+      if(str1[i-1] === str2[j-1]){
+        dp[i][j] = dp[i-1][j-1] + 1;
+      }
+      else{
+        dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+      }
+    }
+    
+  }
+
+  return dp[str1.length][str2.length];
+
+}
+
+const str1 = "AGGTAB";
+const str2 = "GXTXAYB";
+
+console.log(("49   ")+ lcs(str1, str2)); // 4 (LCS is "GTAB")
+
+//50. Implement a Simple Edit Distance Algorithm
