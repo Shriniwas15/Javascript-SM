@@ -1168,3 +1168,41 @@ const str2 = "GXTXAYB";
 console.log(("49   ")+ lcs(str1, str2)); // 4 (LCS is "GTAB")
 
 //50. Implement a Simple Edit Distance Algorithm
+
+// The Edit Distance (Levenshtein distance) is the minimum number of operations required to transform one string 
+// into another, where the allowed operations are insertion, deletion, or substitution of a single character.
+
+function editDistance(str1, str2){
+
+  
+  let dp = Array(str1.length + 1).fill(0).map(() => Array(str2.length + 1).fill(0));
+
+  for(let i=0; i<=str1.length; i++){
+    for(let j=0; j<=str2.length; j++){
+      if(i === 0){
+        dp[i][j] = j;
+      }
+      else if(j === 0){
+        dp[i][j] = i;
+      }
+      else if(str1[i-1] === str2[j-1]){
+        dp[i][j] = dp[i-1][j-1];
+      }
+      else{
+        dp[i][j] = 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+      }
+    }
+  }
+
+  return   dp[str1.length][str2.length];
+
+  
+}
+
+const str3 = "kitten";
+
+
+const str4 = "sitting";
+
+console.log(
+  ("50   ")+ editDistance(str3, str4)); // 3 (substitute 'k' with 's', substitute 'e' with 'i', insert 'g')
