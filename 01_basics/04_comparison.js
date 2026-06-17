@@ -1206,3 +1206,60 @@ const str4 = "sitting";
 
 console.log(
   ("50   ")+ editDistance(str3, str4)); // 3 (substitute 'k' with 's', substitute 'e' with 'i', insert 'g')
+
+  //51. Implement a Simple Trie Data Structure
+
+// A Trie (prefix tree) is a tree-like data structure that stores a dynamic set of strings, 
+
+// where the keys are usually strings. It is used for efficient retrieval of a key in a dataset of strings.
+
+class TrieNode{
+
+  constructor(){
+    this.children = {};
+    this.isEndOfWord = false;
+  }
+
+}
+
+class Trie{
+
+  constructor(){
+    this.root = new TrieNode();
+  }
+
+  insert(word){
+    let current = this.root;
+
+    for(let char of word){
+      if(!current.children[char]){
+        current.children[char] = new TrieNode();
+      }
+      current = current.children[char];
+    }
+
+    current.isEndOfWord = true;
+  }
+
+  search(word){
+    let current = this.root;
+
+    for(let char of word){
+      if(!current.children[char]){
+        return false;
+      }
+      current = current.children[char];
+    }
+
+    return current.isEndOfWord;
+  }
+
+}
+
+const trie = new Trie();
+
+trie.insert("hello");
+trie.insert("world");
+
+console.log(("51   ")+ trie.search("hello"));
+
