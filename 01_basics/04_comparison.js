@@ -1263,3 +1263,7 @@ trie.insert("world");
 
 console.log(("51   ")+ trie.search("hello"));
 
+console.log(("51   ")+ trie.search("world"));
+
+console.log(("51   ")+ trie.search("hi")); // false
+
