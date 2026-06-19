@@ -1261,9 +1261,96 @@ const trie = new Trie();
 trie.insert("hello");
 trie.insert("world");
 
-console.log(("51   ")+ trie.search("hello"));
+console.log(("51   ")+ trie.search("hello"));//true
 
-console.log(("51   ")+ trie.search("world"));
+console.log(("51   ")+ trie.search("world"));//true
 
 console.log(("51   ")+ trie.search("hi")); // false
 
+//52. Implement a Simple Heap Data Structure
+
+// A Heap is a specialized tree-based data structure that satisfies the heap property. 
+// In a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than
+//  or equal to the keyof C. In a min heap, the key of P is less than or equal to the key of C.
+
+class MaxHeap{
+
+  constructor(){
+    this.heap = [];
+  }
+
+  insert(value){
+
+    this.heap.push(value);
+    this.bubbleUp(this.heap.length - 1);
+
+  }
+
+  bubbleUp(index){
+
+    while(index > 0){
+      let parentIndex = Math.floor((index - 1) / 2);
+
+      if(this.heap[parentIndex] >= this.heap[index]){
+        break;
+      }
+
+      [this.heap[parentIndex
+], this.heap[index]] = [this.heap[index], this.heap[parentIndex]];
+
+      index = parentIndex;
+    }
+
+  }
+
+  extractMax(){
+
+    if(this.heap.length === 0){
+      return null;
+    }
+
+    if(this.heap.length === 1){
+      return this.heap.pop();
+    }
+
+    const max = this.heap[0];
+    this.heap[0] = this.heap.pop();
+    this.bubbleDown(0);
+
+    return max;
+  }
+
+  bubbleDown(index){
+
+    while(index < this.heap.length){
+      let leftChild = 2 * index + 1;
+      let rightChild = 2 * index + 2;
+      let largest = index;
+
+      if(leftChild < this.heap.length && this.heap[leftChild] > this.heap[largest]){
+        largest = leftChild;
+      }
+
+      if(rightChild < this.heap.length && this.heap[rightChild] > this.heap[largest]){
+        largest = rightChild;
+      }
+
+      if(largest === index){
+        break;
+      }
+
+      [this.heap[index], this.heap[largest]] = [this.heap[largest], this.heap[index]];
+      index = largest;
+    }
+
+  }
+
+}
+
+const maxHeap = new MaxHeap();
+
+maxHeap.insert(10);
+maxHeap.insert(20);
+maxHeap.insert(5);
+
+console.log(("52   ")+ maxHeap.extractMax());
