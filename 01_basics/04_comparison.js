@@ -1440,6 +1440,42 @@ minHeap.insert(5);
 
 console.log(("53   ")+ minHeap.extractMin());
 
+//54. Implement a Simple Priority Queue
+
+class PriorityQueue{
+
+  constructor(){
+    this.queue = [];
+  }
+
+  enqueue(element, priority){
+    this.queue.push({element, priority});
+    this.queue.sort((a,b) => a.priority - b.priority);
+  }
+
+  dequeue(){
+    return this.queue.shift();
+  }
+
+  isEmpty(){
+    return this.queue.length === 0;
+  }
+
+}
+
+const pq = new PriorityQueue();
+
+pq.enqueue("Task 1", 2);
+pq.enqueue("Task 2", 1);
+pq.enqueue("Task 3", 3);
+
+console.log(("54   ")+ pq.dequeue().element);
+
+
+
+
+
+
 
 
                                                                                       
