@@ -1471,10 +1471,78 @@ pq.enqueue("Task 3", 3);
 
 console.log(("54   ")+ pq.dequeue().element);
 
+//55. Implement a Simple Circular Queue
+
+class CircularQueue{
+
+  constructor(size){
+    this.queue = new Array(size);
+    this.head = -1;
+    this.tail = -1;
+    this.size = size;
+  }
+
+  enqueue(value){
+
+    if((this.tail + 1) % this.size === this.head){
+      throw new Error("Queue is full");
+    }
+
+    if(this.head === -1){
+      this.head = 0;
+    }
+
+    this.tail = (this.tail + 1) % this.size;
+    this.queue[this.tail] = value;
+
+  }
+
+  dequeue(){
+
+    if(this.head === -1){
+
+      throw new Error("Queue is empty");
+    }
+
+    const value = this.queue[this.head];
+
+    if(this.head === this.tail){
+      this.head = -1;
+      this.tail = -1;
+    }
+    else{
+      this.head = (this.head + 1) % this.size;
+    }
+
+    return value;
+
+  }
+
+}
+
+const cq = new CircularQueue(3);
+
+cq.enqueue(1);
+cq.enqueue(2);
+cq.enqueue(3);
+
+console.log(("55   ")+ cq.dequeue());
+console.log(("55   ")+ cq.dequeue());
+
+cq.enqueue(4);
+
+console.log(("55   ")+ cq.dequeue());
+console.log(("55   ")+ cq.dequeue());
 
 
 
 
+
+
+
+
+  
+  
 
 
 
