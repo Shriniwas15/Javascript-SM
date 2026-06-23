@@ -1535,6 +1535,51 @@ console.log(("55   ")+ cq.dequeue());
 console.log(("55   ")+ cq.dequeue());
 
 
+//56. Implement a Simple Deque (Double-Ended Queue)
+
+class Deque{
+
+  constructor(){
+    this.items = [];
+  }
+
+  addFront(value){
+    this.items.unshift(value);
+  }
+
+  addRear(value){
+    this.items.push(value);
+  }
+
+  removeFront(){
+    return this.items.shift();
+  }
+
+  removeRear(){
+    return this.items.pop();
+  }
+
+  isEmpty(){
+    return this.items.length === 0;
+  }
+
+  size(){
+    return this.items.length;
+  }
+
+}
+
+const deque = new Deque();
+
+deque.addRear(1);
+deque.addRear(2);
+deque.addFront(0);
+
+console.log(("56   ")+ deque.removeFront());
+console.log(("56   ")+ deque.removeRear());
+
+
+
 
 
 
