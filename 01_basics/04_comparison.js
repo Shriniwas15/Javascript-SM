@@ -1578,6 +1578,52 @@ deque.addFront(0);
 console.log(("56   ")+ deque.removeFront());
 console.log(("56   ")+ deque.removeRear());
 
+//57 Implement a Simple Hash Table
+
+class HashTable{
+
+  constructor(size){
+    this.table = new Array(size);
+  }
+
+  hash(key){
+    let hash = 0;
+    for(let char of key){
+      hash += char.charCodeAt(0);
+    }
+    return hash % this.table.length;
+  }
+
+  set(key, value){
+    const index = this.hash(key);
+    if(!this.table[index]){
+      this.table[index] = [];
+    }
+    this.table[index].push([key, value]);
+  }
+
+  get(key){
+    const index = this.hash(key);
+    if(this.table[index]){
+      for(let [k, v] of this.table[index]){
+        if(k === key){
+          return v;
+        }
+      }
+    }
+    return undefined;
+  }
+
+}
+
+const ht = new HashTable(10);
+
+ht.set("name", "Shriniwas");
+ht.set("age", 30);
+
+console.log(("57   ")+ ht.get("name"));
+console.log(("57   ")+ ht.get("age"));
+console.log(("57   ")+ ht.get("gender")); // undefined
 
 
 
