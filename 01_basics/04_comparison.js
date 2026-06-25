@@ -1626,6 +1626,57 @@ console.log(("57   ")+ ht.get("age"));
 console.log(("57   ")+ ht.get("gender")); // undefined
 
 
+//58 Implement a Simple Bloom Filter
+
+// A Bloom Filter is a space-efficient probabilistic data structure that is used to test whether 
+//an element is a member of a set. It can return false positives but never false negatives.
+
+
+class BloomFilter{
+
+  constructor(size, hashCount){
+    this.size = size;
+    this.hashCount = hashCount;
+    this.bitArray = new Array(size).fill(false);
+  }
+
+  hash(value, seed){
+    let hash = 0;
+    for(let char of value){
+      hash = (hash * seed + char.charCodeAt(0)) % this.size;
+    }
+    return hash;
+  }
+
+  add(value){
+    for(let i=0; i<this.hashCount; i++){
+      const index = this.hash(value, i + 1);
+      this.bitArray[index] = true;
+    }
+  }
+
+  contains(value){
+    for(let i=0; i<this.hashCount; i++){
+      const index = this.hash(value, i + 1);
+      if(!this.bitArray[index]){
+        return false;
+      }
+    }
+    return true;
+  }
+
+}
+
+const bloomFilter = new BloomFilter(100, 3);
+
+bloomFilter.add("hello");
+bloomFilter.add("world");
+
+console.log(("58   ")+ bloomFilter.contains("hello")); // true
+console.log(("58   ")+ bloomFilter.contains("world")); // true
+console.log(("58   ")+ bloomFilter.contains("test")); // false (may return true due to false positive)
+
+
 
 
 
