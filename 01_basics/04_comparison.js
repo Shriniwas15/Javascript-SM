@@ -1676,6 +1676,85 @@ console.log(("58   ")+ bloomFilter.contains("hello")); // true
 console.log(("58   ")+ bloomFilter.contains("world")); // true
 console.log(("58   ")+ bloomFilter.contains("test")); // false (may return true due to false positive)
 
+//59 Implement a Simple Trie with Prefix Search
+
+class TrieNode1{
+  
+  constructor(){
+    this.children = {};
+    this.isEndOfWord = false;
+  }
+
+}
+
+class Trie1{
+
+  constructor(){
+    this.root = new TrieNode1();
+
+
+
+  }  insert(word){
+    let current = this.root;
+
+    for(let char of word){
+      if(!current.children[char]){
+        current.children[char] = new TrieNode1();
+      }
+      current = current.children[char];
+    }
+
+    current.isEndOfWord = true;
+  }
+
+  search(word){
+    let current = this.root;
+
+    for(let char of word){
+      if(!current.children[char]){
+        return false;
+      }
+      current = current.children[char];
+    }
+
+    return current.isEndOfWord;
+  }
+  
+  startsWith(prefix){
+    let current = this.root;  
+    
+    for(let char of prefix){
+      if(!current.children[char]){
+        return false;
+      }
+      current = current.children[char];
+    }
+
+    return true;
+  }
+
+}
+
+const trie2 = new Trie1();
+
+trie2.insert("hello");
+trie2.insert("world");
+
+console.log(("59   ")+ trie2.search("hello")); // true
+console.log(("59   ")+ trie2.search("world")); // true
+console.log(("59   ")+ trie2.search("hi")); // false
+console.log(("59   ")+ trie2.startsWith("he")); // true
+console.log(("59   ")+ trie2.startsWith("wo")); // true
+console.log(("59   ")+ trie2.startsWith("hi")); // false             
+
+
+
+
+
+
+
+
+  
 
 
 
