@@ -1745,12 +1745,36 @@ console.log(("59   ")+ trie2.search("world")); // true
 console.log(("59   ")+ trie2.search("hi")); // false
 console.log(("59   ")+ trie2.startsWith("he")); // true
 console.log(("59   ")+ trie2.startsWith("wo")); // true
-console.log(("59   ")+ trie2.startsWith("hi")); // false             
+console.log(("59   ")+ trie2.startsWith("hi")); // false      
 
+//60 Implement a Simple Graph with Adjacency Matrix
 
+class GraphMatrix{
 
+  constructor(size){
+    this.size = size;
+    this.matrix = new Array(size).fill().map(() => new Array(size).fill(false));
+  }
 
+  addEdge(v1, v2){
+    this.matrix[v1][v2] = true;
+    this.matrix[v2][v1] = true; // For undirected graph
+  }
 
+  hasEdge(v1, v2){
+    return this.matrix[v1][v2];
+  }
+
+}
+
+const graphMatrix = new GraphMatrix(5);
+
+graphMatrix.addEdge(0, 1);
+graphMatrix.addEdge(0, 2);
+graphMatrix.addEdge(1, 3);
+
+console.log(("60   ")+ graphMatrix.hasEdge(0, 1)); // true
+console.log(("60   ")+ graphMatrix.hasEdge(0, 3)); // false 
 
 
 
