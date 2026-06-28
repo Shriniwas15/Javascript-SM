@@ -1776,6 +1776,43 @@ graphMatrix.addEdge(1, 3);
 console.log(("60   ")+ graphMatrix.hasEdge(0, 1)); // true
 console.log(("60   ")+ graphMatrix.hasEdge(0, 3)); // false 
 
+//61 Implement a Simple Graph with Adjacency List
+
+class GraphList{
+
+  constructor(){
+    this.adjacencyList = {};
+  }
+
+  addVertex(vertex){
+    if(!this.adjacencyList[vertex]){
+      this.adjacencyList[vertex] = [];
+    }
+  }
+
+  addEdge(v1, v2){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencyList[v1].push(v2);
+    this.adjacencyList[v2].push(v1); // For undirected graph
+  }
+
+  getNeighbors(vertex){
+    return this.adjacencyList[vertex] || [];
+  }
+
+}
+
+const graphList = new GraphList();
+
+graphList.addEdge("A", "B");
+graphList.addEdge("A", "C");
+graphList.addEdge("B", "D");
+
+console.log(("61   ")+ graphList.getNeighbors("A")); // ["B", "C"]
+console.log(("61   ")+ graphList.getNeighbors("B")); // ["A", "D"]
+console.log(("61   ")+ graphList.getNeighbors("E")); // [] (no neighbors)
+
 
 
   
