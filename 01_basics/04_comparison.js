@@ -1813,6 +1813,32 @@ console.log(("61   ")+ graphList.getNeighbors("A")); // ["B", "C"]
 console.log(("61   ")+ graphList.getNeighbors("B")); // ["A", "D"]
 console.log(("61   ")+ graphList.getNeighbors("E")); // [] (no neighbors)
 
+//62 Implement a Simple Graph with Edge List
+
+class GraphEdgeList{
+
+  constructor(){
+    this.edges = [];
+  }
+
+  addEdge(v1, v2){
+    this.edges.push([v1, v2]);
+  }
+
+  getEdges(){
+    return this.edges;
+  }
+
+}
+
+const graphEdgeList = new GraphEdgeList();
+
+graphEdgeList.addEdge("A", "B");
+graphEdgeList.addEdge("A", "C");
+graphEdgeList.addEdge("B", "D");
+
+console.log(("62   ")+ JSON.stringify(graphEdgeList.getEdges())); // [["A","B"],["A","C"],["B","D"]]
+
 
 
   
