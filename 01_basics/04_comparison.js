@@ -1839,6 +1839,39 @@ graphEdgeList.addEdge("B", "D");
 
 console.log(("62   ")+ JSON.stringify(graphEdgeList.getEdges())); // [["A","B"],["A","C"],["B","D"]]
 
+//63 Implement a Simple Graph with Incidence Matrix
+
+class GraphIncidenceMatrix{
+
+  constructor(vertices, edges){
+    this.vertices = vertices;
+    this.edges = edges;
+    this.matrix = new Array(vertices.length).fill().map(() => new Array(edges.length).fill(0));
+  }
+
+  addEdge(edgeIndex, v1Index, v2Index){
+    this.matrix[v1Index][edgeIndex] = 1;
+    this.matrix[v2Index][edgeIndex] = 1; // For undirected graph
+  }
+
+  getIncidenceMatrix(){
+    return this.matrix;
+  }
+
+}
+
+const vertices = ["A", "B", "C", "D"];
+const edges = ["e1", "e2", "e3"];
+
+const graphIncidenceMatrix = new GraphIncidenceMatrix(vertices, edges);
+
+graphIncidenceMatrix.addEdge(0, 0, 1); // e1 connects A and B
+graphIncidenceMatrix.addEdge(1, 0, 2); // e2 connects A and C
+graphIncidenceMatrix.addEdge(2, 1, 3); // e3 connects B and D
+
+console.log(("63   ")+ JSON.stringify(graphIncidenceMatrix.getIncidenceMatrix())); 
+// [[1,1,0],[1,0,1],[0,1,0],[0,0,1]]
+
 
 
   
