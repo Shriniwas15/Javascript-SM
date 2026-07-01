@@ -1872,6 +1872,43 @@ graphIncidenceMatrix.addEdge(2, 1, 3); // e3 connects B and D
 console.log(("63   ")+ JSON.stringify(graphIncidenceMatrix.getIncidenceMatrix())); 
 // [[1,1,0],[1,0,1],[0,1,0],[0,0,1]]
 
+//64 Implement a Simple Graph with Adjacency Set
+
+class GraphAdjacencySet{
+
+  constructor(){
+    this.adjacencySet = new Map();
+  }
+
+  addVertex(vertex){
+    if(!this.adjacencySet.has(vertex)){
+      this.adjacencySet.set(vertex, new Set());
+    }
+  }
+
+  addEdge(v1, v2){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencySet.get(v1).add(v2);
+    this.adjacencySet.get(v2).add(v1); // For undirected graph
+  }
+
+  getNeighbors(vertex){
+    return Array.from(this.adjacencySet.get(vertex) || []);
+  }
+
+}
+
+const graphAdjacencySet = new GraphAdjacencySet();
+
+graphAdjacencySet.addEdge("A", "B");
+graphAdjacencySet.addEdge("A", "C");
+graphAdjacencySet.addEdge("B", "D");
+
+console.log(("64   ")+ graphAdjacencySet.getNeighbors("A")); // ["B", "C"]
+console.log(("64   ")+ graphAdjacencySet.getNeighbors("B")); // ["A", "D"]
+console.log(("64   ")+ graphAdjacencySet.getNeighbors("E")); // [] (no neighbors)
+
 
 
   
