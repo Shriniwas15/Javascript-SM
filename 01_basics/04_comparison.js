@@ -1909,6 +1909,43 @@ console.log(("64   ")+ graphAdjacencySet.getNeighbors("A")); // ["B", "C"]
 console.log(("64   ")+ graphAdjacencySet.getNeighbors("B")); // ["A", "D"]
 console.log(("64   ")+ graphAdjacencySet.getNeighbors("E")); // [] (no neighbors)
 
+//65 Implement a Simple Graph with Adjacency Map
+
+class GraphAdjacencyMap{
+
+  constructor(){
+    this.adjacencyMap = new Map();
+  }
+
+  addVertex(vertex){
+    if(!this.adjacencyMap.has(vertex)){
+      this.adjacencyMap.set(vertex, new Map());
+    }
+  }
+
+  addEdge(v1, v2, weight = 1){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencyMap.get(v1).set(v2, weight);
+    this.adjacencyMap.get(v2).set(v1, weight); // For undirected graph
+  }
+
+  getNeighbors(vertex){
+    return Array.from(this.adjacencyMap.get(vertex) || []);
+  }
+
+}
+
+const graphAdjacencyMap = new GraphAdjacencyMap();
+
+graphAdjacencyMap.addEdge("A", "B", 5);
+graphAdjacencyMap.addEdge("A", "C", 3);
+graphAdjacencyMap.addEdge("B", "D", 2);
+
+console.log(("65   ")+ JSON.stringify(graphAdjacencyMap.getNeighbors("A"))); // [["B",5],["C",3]]
+console.log(("65   ")+ JSON.stringify(graphAdjacencyMap.getNeighbors("B"))); // [["A",5],["D",2]]
+console.log(("65   ")+ JSON.stringify(graphAdjacencyMap.getNeighbors("E"))); // [] (no neighbors)
+
 
 
   
