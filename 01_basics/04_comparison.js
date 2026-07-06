@@ -2037,8 +2037,44 @@ graphMatrixWeighted.addEdge(0, 2, 3);
 graphMatrixWeighted.addEdge(1, 3, 2);
 
 console.log(("68   ")+ graphMatrixWeighted.getWeight(0, 1)); // 5
-console.log(("68   ")+ graphMatrixWeighted.getWeight(0, 3)); //
+console.log(("68   ")+ graphMatrixWeighted.getWeight(0, 3)); // 0 (no edge)
 
+//69 Implement a Simple Graph with Adjacency Set and Weights
+
+class GraphAdjacencySetWeighted{
+
+  constructor(){
+    this.adjacencySet = new Map();
+  }
+
+  addVertex(vertex){
+    if(!this.adjacencySet.has(vertex)){
+      this.adjacencySet.set(vertex, new Map());
+    }
+  }
+
+  addEdge(v1, v2, weight){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencySet.get(v1).set(v2, weight);
+    this.adjacencySet.get(v2).set(v1, weight); // For undirected graph
+  }
+
+  getNeighbors(vertex){
+    return Array.from(this.adjacencySet.get(vertex) || []);
+  }
+
+}
+
+const graphAdjacencySetWeighted = new GraphAdjacencySetWeighted();
+
+graphAdjacencySetWeighted.addEdge("A", "B", 5);
+graphAdjacencySetWeighted.addEdge("A", "C", 3);
+graphAdjacencySetWeighted.addEdge("B", "D", 2);
+
+console.log(("69   ")+ JSON.stringify(graphAdjacencySetWeighted.getNeighbors("A"))); // [["B",5],["C",3]]
+console.log(("69   ")+ JSON.stringify(graphAdjacencySetWeighted.getNeighbors("B"))); // [["A",5],["D",2]]
+console.log(("69   ")+ JSON.stringify(graphAdjacencySetWeighted.getNeighbors("E"))); // [] (no neighbors)
 
 
   
