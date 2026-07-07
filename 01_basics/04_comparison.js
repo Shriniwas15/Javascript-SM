@@ -2076,6 +2076,42 @@ console.log(("69   ")+ JSON.stringify(graphAdjacencySetWeighted.getNeighbors("A"
 console.log(("69   ")+ JSON.stringify(graphAdjacencySetWeighted.getNeighbors("B"))); // [["A",5],["D",2]]
 console.log(("69   ")+ JSON.stringify(graphAdjacencySetWeighted.getNeighbors("E"))); // [] (no neighbors)
 
+//70 Implement a Simple Graph with Adjacency Map and Weights
+
+class GraphAdjacencyMapWeighted{
+
+  constructor(){
+    this.adjacencyMap = new Map();
+  }
+
+  addVertex(vertex){
+    if(!this.adjacencyMap.has(vertex)){
+      this.adjacencyMap.set(vertex, new Map());
+    }
+  }
+
+  addEdge(v1, v2, weight){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencyMap.get(v1).set(v2, weight);
+    this.adjacencyMap.get(v2).set(v1, weight); // For undirected graph
+  }
+
+  getNeighbors(vertex){
+    return Array.from(this.adjacencyMap.get(vertex) || []);
+  }
+
+}
+
+const graphAdjacencyMapWeighted = new GraphAdjacencyMapWeighted();
+
+graphAdjacencyMapWeighted.addEdge("A", "B", 5);
+graphAdjacencyMapWeighted.addEdge("A", "C", 3);
+graphAdjacencyMapWeighted.addEdge("B", "D", 2);
+
+console.log(("70   ")+ JSON.stringify(graphAdjacencyMapWeighted.getNeighbors("A"))); // [["B",5],["C",3]]
+console.log(("70   ")+ JSON.stringify(graphAdjacencyMapWeighted.getNeighbors("B"))); // [["A",5],["D",2]]
+console.log(("70   ")+ JSON.stringify(graphAdjacencyMapWeighted.getNeighbors("E"))); // [] (no neighbors)
 
   
 
