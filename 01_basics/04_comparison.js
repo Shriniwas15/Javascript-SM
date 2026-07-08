@@ -2113,6 +2113,35 @@ console.log(("70   ")+ JSON.stringify(graphAdjacencyMapWeighted.getNeighbors("A"
 console.log(("70   ")+ JSON.stringify(graphAdjacencyMapWeighted.getNeighbors("B"))); // [["A",5],["D",2]]
 console.log(("70   ")+ JSON.stringify(graphAdjacencyMapWeighted.getNeighbors("E"))); // [] (no neighbors)
 
+//71 Implement a Simple Graph with Edge List and Weights
+
+class GraphEdgeListWeighted2{
+
+  constructor(){
+    this.edges = [];
+  }
+
+  addEdge(v1, v2, weight){
+    this.edges.push({v1, v2, weight});
+  }
+
+  getEdges(){
+    return this.edges;
+  }
+
+}
+
+const graphEdgeListWeighted2 = new GraphEdgeListWeighted2();
+
+graphEdgeListWeighted2.addEdge("A", "B", 5);
+graphEdgeListWeighted2.addEdge("A", "C", 3);
+graphEdgeListWeighted2.addEdge("B", "D", 2);
+
+console.log(("71   ")+ JSON.stringify(graphEdgeListWeighted2.getEdges())); 
+// [{"v1":"A","v2":"B","weight":5},{"v1":"A","v2":"C","weight":3},{"v1":"B","v2":"D","weight":2}].  
+
+  
+
   
 
 
