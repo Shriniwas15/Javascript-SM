@@ -2140,7 +2140,42 @@ graphEdgeListWeighted2.addEdge("B", "D", 2);
 console.log(("71   ")+ JSON.stringify(graphEdgeListWeighted2.getEdges())); 
 // [{"v1":"A","v2":"B","weight":5},{"v1":"A","v2":"C","weight":3},{"v1":"B","v2":"D","weight":2}].  
 
-  
+  //72 Implement a Simple Graph with Adjacency List and Weights
+
+class GraphListWeighted2{
+
+  constructor(){
+    this.adjacencyList = {};
+  }
+
+  addVertex(vertex){
+    if(!this.adjacencyList[vertex]){
+      this.adjacencyList[vertex] = [];
+    }
+  }
+
+  addEdge(v1, v2, weight){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencyList[v1].push({node: v2, weight});
+    this.adjacencyList[v2].push({node: v1, weight}); // For undirected graph
+  }
+
+  getNeighbors(vertex){
+    return this.adjacencyList[vertex] || [];
+  }
+
+}
+
+const graphListWeighted2 = new GraphListWeighted2();
+
+graphListWeighted2.addEdge("A", "B", 5);
+graphListWeighted2.addEdge("A", "C", 3);
+graphListWeighted2.addEdge("B", "D", 2);
+
+console.log(("72   ")+ JSON.stringify(graphListWeighted2.getNeighbors("A"))); // [{"node":"B","weight":5},{"node":"C","weight":3}]
+console.log(("72   ")+ JSON.stringify(graphListWeighted2.getNeighbors("B"))); // [{"node":"A","weight":5},{"node":"D","weight":2}]
+console.log(("72   ")+ JSON.stringify(graphListWeighted2.getNeighbors("E"))); // [] (no neighbors)
 
   
 
