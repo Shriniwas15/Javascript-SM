@@ -2177,6 +2177,35 @@ console.log(("72   ")+ JSON.stringify(graphListWeighted2.getNeighbors("A"))); //
 console.log(("72   ")+ JSON.stringify(graphListWeighted2.getNeighbors("B"))); // [{"node":"A","weight":5},{"node":"D","weight":2}]
 console.log(("72   ")+ JSON.stringify(graphListWeighted2.getNeighbors("E"))); // [] (no neighbors)
 
+//73 Implement a Simple Graph with Adjacency Matrix and Weights
+
+class GraphMatrixWeighted2{
+
+  constructor(size){
+    this.size = size;
+    this.matrix = new Array(size).fill().map(() => new Array(size).fill(0));
+  }
+
+  addEdge(v1, v2, weight){
+    this.matrix[v1][v2] = weight;
+    this.matrix[v2][v1] = weight; // For undirected graph
+  }
+
+  getWeight(v1, v2){
+    return this.matrix[v1][v2];
+  }
+
+}
+
+const graphMatrixWeighted2 = new GraphMatrixWeighted2(5);
+
+graphMatrixWeighted2.addEdge(0, 1, 5);
+graphMatrixWeighted2.addEdge(0, 2, 3);
+graphMatrixWeighted2.addEdge(1, 3, 2);
+
+console.log(("73   ")+ graphMatrixWeighted2.getWeight(0, 1)); // 5
+console.log(("73   ")+ graphMatrixWeighted2.getWeight(0, 3)); // 0 (no edge)
+
   
 
 
