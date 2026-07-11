@@ -2206,12 +2206,41 @@ graphMatrixWeighted2.addEdge(1, 3, 2);
 console.log(("73   ")+ graphMatrixWeighted2.getWeight(0, 1)); // 5
 console.log(("73   ")+ graphMatrixWeighted2.getWeight(0, 3)); // 0 (no edge)
 
-  
+//74 Implement a Simple Graph with Adjacency Set and Weights
+class GraphSetWeighted2{
 
+  constructor(){
+    this.adjacencySet = new Map();
+  }
 
+  addVertex(vertex){
+    if(!this.adjacencySet.has(vertex)){
+      this.adjacencySet.set(vertex, new Map());
+    }
+  }
 
+  addEdge(v1, v2, weight){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencySet.get(v1).set(v2, weight);
+    this.adjacencySet.get(v2).set(v1, weight); // For undirected graph
+  }
 
+  getWeight(v1, v2){
+    const neighbors = this.adjacencySet.get(v1);
+    return neighbors ? neighbors.get(v2) : 0;
+  }
 
+}
+
+const graphSetWeighted2 = new GraphSetWeighted2();
+
+graphSetWeighted2.addEdge("A", "B", 5);
+graphSetWeighted2.addEdge("A", "C", 3);
+graphSetWeighted2.addEdge("B", "D", 2);
+
+console.log(("74   ")+ graphSetWeighted2.getWeight("A", "B")); // 5
+console.log(("74   ")+ graphSetWeighted2.getWeight("A", "D")); // 0 (no edge)
 
 
   
