@@ -2279,6 +2279,34 @@ graphMapWeighted2.addEdge("B", "D", 2);
 console.log(("75   ")+ graphMapWeighted2.getWeight("A", "B")); // 5
 console.log(("75   ")+ graphMapWeighted2.getWeight("A", "D")); // 0 (no edge)   
 
+//76 Implement a Simple Graph with Edge List and Weights
+
+class GraphEdgeListWeighted3{ 
+
+  constructor(){    
+
+    this.edges = [];
+  }
+
+  addEdge(v1, v2, weight){
+    this.edges.push({v1, v2, weight});
+  }
+
+  getEdges(){
+    return this.edges;
+  }
+
+}
+
+const graphEdgeListWeighted3 = new GraphEdgeListWeighted3();
+
+graphEdgeListWeighted3.addEdge("A", "B", 5);
+graphEdgeListWeighted3.addEdge("A", "C", 3);
+graphEdgeListWeighted3.addEdge("B", "D", 2);      
+
+console.log(("76   ")+ JSON.stringify(graphEdgeListWeighted3.getEdges()));
+
+                                                  
 
 
 
