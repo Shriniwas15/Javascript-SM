@@ -2342,7 +2342,36 @@ graphListWeighted3.addEdge("B", "D", 2);
 
 console.log(("77   ")+ JSON.stringify(graphListWeighted3.getNeighbors("A"))); // [{"node":"B","weight":5},{"node":"C","weight":3}]
 console.log(("77   ")+ JSON.stringify(graphListWeighted3.getNeighbors("B"))); // [{"node":"A","weight":5},{"node":"D","weight":2}]
-console.log(("77   ")+ JSON.stringify(graphListWeighted3.getNeighbors("E"))); // [] (no neighbors)    
+console.log(("77   ")+ JSON.stringify(graphListWeighted3.getNeighbors("E"))); // [] (no neighbors)  
+
+//78 Implement a Simple Graph with Adjacency Matrix and Weights
+
+class GraphMatrixWeighted3{
+
+  constructor(size){
+    this.size = size;
+    this.matrix = new Array(size).fill().map(() => new Array(size).fill(0));
+  }
+
+  addEdge(v1, v2, weight){
+    this.matrix[v1][v2] = weight;
+    this.matrix[v2][v1] = weight; // For undirected graph
+  }
+
+  getWeight(v1, v2){
+    return this.matrix[v1][v2];
+  }
+
+}
+
+const graphMatrixWeighted3 = new GraphMatrixWeighted3(5);
+
+graphMatrixWeighted3.addEdge(0, 1, 5);
+graphMatrixWeighted3.addEdge(0, 2, 3);
+graphMatrixWeighted3.addEdge(1, 3, 2);
+
+console.log(("78   ")+ graphMatrixWeighted3.getWeight(0, 1)); // 5
+console.log(("78   ")+ graphMatrixWeighted3.getWeight(0, 3)); // 0 (no edge)            
     
 
                                                   
