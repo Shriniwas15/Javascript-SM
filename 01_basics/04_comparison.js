@@ -2411,6 +2411,45 @@ graphSetWeighted3.addEdge("B", "D", 2);
 console.log(("79   ")+ graphSetWeighted3.getWeight("A", "B")); // 5
 console.log(("79   ")+ graphSetWeighted3.getWeight("A", "D")); // 0 (no edge) 
 
+//80 Implement a Simple Graph with Adjacency Map and Weights
+
+class GraphMapWeighted3{
+
+  constructor(){
+    this.adjacencyMap = new Map();
+  }
+
+  addVertex(vertex){
+    if(!this.adjacencyMap.has(vertex)){
+      this.adjacencyMap.set(vertex, new Map());
+    }
+  }
+
+  addEdge(v1, v2, weight){
+    this.addVertex(v1);
+    this.addVertex(v2);
+    this.adjacencyMap.get(v1).set(v2, weight);
+    this.adjacencyMap.get(v2).set(v1, weight); // For undirected graph
+  }
+
+  getWeight(v1, v2){
+    const neighbors = this.adjacencyMap.get(v1);
+    return neighbors ? neighbors.get(v2) : 0;
+  }
+
+}
+
+const graphMapWeighted3 = new GraphMapWeighted3();    
+
+graphMapWeighted3.addEdge("A", "B", 5);
+graphMapWeighted3.addEdge("A", "C", 3);
+graphMapWeighted3.addEdge("B", "D", 2);
+
+console.log(("80   ")+ graphMapWeighted3.getWeight("A", "B")); // 5
+console.log(("80   ")+ graphMapWeighted3.getWeight("A", "D")); // 0 (no edge) 
+
+  
+
     
     
 
